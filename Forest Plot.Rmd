@@ -1,0 +1,41 @@
+---
+title: "Homework 5 - BSTA 513"
+author: "Matthew Hoctor"
+date: "5/18/2021"
+output:
+  html_document:
+    number_sections: no
+    theme: lumen
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#library(dplyr)
+#library(readxl)
+#library(tidyverse)
+#library(ggplot2)
+#library(CarletonStats)
+#library(pwr)
+#library(BSDA)
+#library(exact2x2)
+#library(car)
+#library(dvmisc)
+#library(emmeans)
+#library(gridExtra)
+#library(DescTools)
+#library(epitools)
+#library(pROC)
+#library(rje)
+#library(lmtest)
+#library(gtsummary)
+#library(mfp)
+#library(linearspline)
+```
+
+# Q1
