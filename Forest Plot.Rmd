@@ -1,8 +1,9 @@
 ---
 title: "Forest Plot - EPI 514"
 author:
-  -Matthew Hoctor^[OHSU-PSU School of Public Health]
-  -Colin Hawkinson^[OHSU-PSU School of Public Health]
+  Matthew Hoctor^[OHSU-PSU School of Public Health]
+  
+  Colin Hawkinson^[OHSU-PSU School of Public Health]
 date: "5/31/2021"
 output:
   html_document:
@@ -41,39 +42,32 @@ knitr::opts_chunk$set(echo = TRUE)
 library(forestplot)
 ```
 
-# Forest Plot
+# Forest Plot 1
 
 ```{r}
 cochrane_from_rmeta <- 
   structure(list(
-    mean  = c(NA, NA, 0.578, 0.165, 0.246, 0.700, 0.348, 0.139, 1.017, NA, 0.531), 
-    lower = c(NA, NA, 0.372, 0.018, 0.072, 0.333, 0.083, 0.016, 0.365, NA, 0.386),
-    upper = c(NA, NA, 0.898, 1.517, 0.833, 1.474, 1.455, 1.209, 2.831, NA, 0.731)),
+    mean  = c(NA, NA,1.68, NA,	2.33,	2.01,	NA,1.51,	0.92,NA,	1.56,	NA,3.88,	3.11,	2.87,	2.22), 
+    lower = c(NA, NA, 1.35, NA, 1.29, 1.08, NA, 1.05, 0.69, NA, 1.23, NA, 1.36, 1.57, 1.38, 1.17),
+    upper = c(NA, NA, 2.08, NA, 4.2,  3.73, NA, 2.17, 1.23, NA, 1.99, NA, 11.08, 6.19, 5.98, 4.18)),
     .Names = c("mean", "lower", "upper"), 
-    row.names = c(NA, -11L), 
+    row.names = c(NA, -13L), 
     class = "data.frame")
 
 tabletext <- cbind(
-  c("", "Study", "Auckland", "Block", 
-    "Doran", "Gamsu", "Morrison", "Papageorgiou", 
-    "Tauesch", NA, "Summary"),
-  c("Deaths", "(steroid)", "36", "1", 
-    "4", "14", "3", "1", 
-    "8", NA, NA),
-  c("Deaths", "(placebo)", "60", "5", 
-    "11", "20", "7", "7", 
-    "10", NA, NA),
-  c("", "OR", "0.58", "0.16", 
-    "0.25", "0.70", "0.35", "0.14", 
-    "1.02", NA, "0.53"))
+  c("Study","Baek et al.","   On-call work vs Insomnia or sleep difficulties","Chung et al.","   3 consecutive night shifts vs Insomnia","   Short recovery periods between shifts vs Insomnia","Karhula et al.","   On-call work vs Sleep difficulties (German)","   On-call work vs sleep difficulties (Finnish)","Lee et al.","   On-call work vs Insomnia or sleep difficulties","Zhang et al.","   Other shift work vs sleep disorder","   2-shift work vs sleep disorder","   3-shift work vs sleep disorder","   4-shift work vs sleep disorder"),
+  c("OR","","1.68","","2.33","2.01","","1.51","0.92","","0.56","","3.88","3.11","2.87","2.22"))
 
 forestplot(tabletext, 
-           cochrane_from_rmeta,new_page = TRUE,
-           is.summary = c(TRUE,TRUE,rep(FALSE,8),TRUE),
-           clip = c(0.1,2.5), 
+           cochrane_from_rmeta$mean,
+           cochrane_from_rmeta$lower,
+           cochrane_from_rmeta$upper,
+           new_page = TRUE,
+           is.summary = c(TRUE,rep(FALSE,15)),
+           clip = c(0.5,15), 
            xlog = TRUE, 
+           boxsize = 0.25,
            col = fpColors(box = "royalblue",
                           line = "darkblue",
                           summary = "royalblue"))
 ```
-
