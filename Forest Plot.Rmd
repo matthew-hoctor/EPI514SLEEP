@@ -56,7 +56,7 @@ cochrane_from_rmeta <-
 
 tabletext <- cbind(
   c("Study","Baek et al.","   On-call work vs Insomnia or sleep difficulties","Chung et al.","   3 consecutive night shifts vs Insomnia","   Short recovery periods between shifts vs Insomnia","Karhula et al.","   On-call work vs Sleep difficulties (German)","   On-call work vs sleep difficulties (Finnish)","Lee et al.","   On-call work vs Insomnia or sleep difficulties","Zhang et al.","   Other shift work vs sleep disorder","   2-shift work vs sleep disorder","   3-shift work vs sleep disorder","   4-shift work vs sleep disorder"),
-  c("OR","","1.68","","2.33","2.01","","1.51","0.92","","0.56","","3.88","3.11","2.87","2.22"))
+  c("OR","","1.68","","2.33","2.01","","1.51","0.92","","1.56","","3.88","3.11","2.87","2.22"))
 
 forestplot(tabletext, 
            cochrane_from_rmeta$mean,
