@@ -73,3 +73,46 @@ forestplot(tabletext,
                           line = "darkblue",
                           summary = "royalblue"))
 ```
+
+# Forest Plot for Schneider & Harknett
+
+```{r ORs}
+betas <- c(NA, -0.30,NA,-0.33,-0.16,-0.50,-0.26,-0.29,NA,0,-0.09,-0.27,-0.35,NA,-0.54,-0.44,-0.41,-0.33,NA,0,-0.06,-0.25,-0.51,-0.85,-1.23)
+OR <- exp(-betas)
+```
+
+```{r tabletext}
+tabletext <- cbind(
+  c("Exposure","   Weekly Variation in Hours","Schedule Type", "   Variable", "   Regular Evening", "   Regular Night", "   Rotating", "   Other", "Advance Notice", "   14+ Days", "   0-2 Days", "   3-6 Days", "   7-14 Days", "Other Shift Types", "   Shift Cancellation", "   On-Call", "   Clopening", "   Schedule Decided By Employer", "Work Instability Scale", "   0", "   1", "   2","   3","   4","   5+"),
+  c("OR","1.35* ",NA,"1.39***","1.17","1.65***","1.30**","1.34*",NA,"Ref","1.09","1.31**","1.42**",NA,"1.72***","1.55***","1.51***","1.39***","","Ref","1.06","1.28*","1.67***","2.34***","3.42***"))
+```
+
+```{r}
+s_h <- 
+  structure(list(
+    mean  = OR, 
+    lower = OR,
+    upper = OR),
+    .Names = c("mean", "lower", "upper"), 
+    row.names = c(NA, -25L), 
+    class = "data.frame")
+
+tabletext <- tabletext
+
+forestplot(tabletext, 
+           s_h$mean,
+           s_h$lower,
+           s_h$upper,
+           hrzl_lines = list(
+             "2" = gpar(col = "#444444")),
+           title = "Odds Ratios of Fair or Poor Subjective Sleep vs Good or Excellent",
+           graphwidth = "auto",
+           new_page = TRUE,
+           is.summary = c(TRUE,rep(FALSE,1),TRUE,rep(FALSE,5),TRUE,rep(FALSE,4),TRUE,rep(FALSE,4),TRUE,rep(FALSE,6)),
+           clip = c(0.5,4), 
+           xlog = TRUE, 
+           boxsize = 0.35,
+           col = fpColors(box = "royalblue",
+                          line = "darkblue",
+                          summary = "royalblue"))
+```
